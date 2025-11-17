@@ -93,21 +93,11 @@ Output: 12V / 3A 이상
 ✔ 24V → 5V (USB3 Hub용)  
 Output: 5V / 3A  
 
-## 2.3 Slip Ring Port Design (PCB Side)
-
-| Function       | PCB Connector Type            | Reason                          |
-|----------------|-------------------------------|---------------------------------|
-| USB3.0 SS/USB2 | 2×5 Header (0.8mm pitch)      | SSTX/SSRX/D+/D−/GND 일괄 배선       |
-| 24V Input      | XT30 / JST-VH                 | 안정적인 5A급 전원 공급           |
-| Shield         | Shield Pad                    | 외피 Shield 접지 분리 가능        |
-
 # 3. USB Routing
 
 ## 3.1 USB3.0 SuperSpeed Pass (SSTX/SSRX)
-
-Split 불가  
+ 
 직결(pass-through)  
-90Ω diff pair 유지  
 
 ```
 Slip Ring (SSTX/SSRX)
@@ -133,11 +123,6 @@ USB3 Hub   U2D2
 (Upstream) (Motor Control)
 ```
 
-규칙:  
-- U2D2는 절대 Hub 뒤에 연결하지 않음  
-- USB2는 split 가능  
-- D+/D− 길이 매칭 필수  
-
 # 4. U2D2 + Power Hub (Motor Control)
 
 | Input               | Source                    |
@@ -149,7 +134,7 @@ USB3 Hub   U2D2
 # 5. Dynamixel Pan/Tilt Motors
 
 - RS485 또는 TTL 제어  
-- U2D2 Power Hub로 12V 공급  
+- U2D2 Power Hub로 12V 공급  (모터와 직접연결 될 수 도)
 - Pan/Tilt 2축 제어  
 - Sync Read/Write 고속 처리  
 
@@ -165,7 +150,7 @@ USB3 Hub   U2D2
 - USB3 Slip Ring (12~22 wire)  
 - Rotating Board PCB  
 - USB3 Hub (MH4UC-U3)  
-- U2D2 + Power Hub  
+- U2D2 + Power Hub(power pin)  
 - DC/DC 24→12V  
 - DC/DC 24→5V  
 - Dynamixel Pan/Tilt  
